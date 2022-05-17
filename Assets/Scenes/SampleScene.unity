@@ -317,6 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4aeb273f0ed85744a7e2481614a7e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letterText: {fileID: 513304215}
+  answerText: {fileID: 1162248609}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +527,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 25
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -556,6 +558,7 @@ GameObject:
   - component: {fileID: 1483566639}
   - component: {fileID: 1483566641}
   - component: {fileID: 1483566640}
+  - component: {fileID: 1483566642}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -624,3 +627,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1483566638}
   m_CullTransparentMesh: 1
+--- !u!114 &1483566642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483566638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd4932ab9c8ad504db7960a409101c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownText: {fileID: 1483566640}
+  startingTime: 10
