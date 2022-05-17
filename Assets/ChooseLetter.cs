@@ -34,6 +34,7 @@ public class ChooseLetter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //
         //Add the space bar time if one click ".", 1 > sec "-"
         //write the answer
         if(checker){
