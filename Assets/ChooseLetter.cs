@@ -11,23 +11,42 @@ public class ChooseLetter : MonoBehaviour
     [SerializeField] Text letterText; // letter that will be visible
     [SerializeField] Text answerText; //anser that will be visible
     string answer; //answer used to compare
-
     float startTime; //Time used in keys
+    [SerializeField] AudioClip dotSound; //sound used in dots of morse
+    [SerializeField] AudioClip dashSound; // sound used in dashes of morse code
+    [SerializeField] AudioSource audioSource; //Source of the audio
+    Queue<AudioClip> clipQueue; //A queue with the clips to play
     // Start is called before the first frame update
     bool checker;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         checker=true;
         answer="";
         answerText.text="";
         random =Random.Range(0,st.Length);
         letter = st[random];
         letterText.text=letter.ToString();
+        string[] characters = new string[code[random].Length];
+        for (int i = 0; i < code[random].Length; i++)
+        {
+             characters[i] = System.Convert.ToString(code[random][i]);
+        }
+        for(int i = 0; i < characters.Length; i++)
+        {
+            //Debug.Log(characters[i]);
+            if(characters[i].Equals("-")){
+                clipQueue.Enqueue(dashSound);
+            }
+            if(characters[i].Equals(".")){
+                clipQueue.Enqueue(dotSound);
+            }
+        }
         //Choose one letter from the alfabet
         //get the correspond morse from that letters
     }
 
-    void stopScriptButton(){
+    public void stopScriptButton(){
         checker=false;
     }
 
@@ -42,20 +61,32 @@ public class ChooseLetter : MonoBehaviour
             {
                 startTime = Time.time;
             }
-            if (Input.GetKeyUp("space") && Time.time - startTime < 0.5f)
+            if (Input.GetKeyUp("space") && Time.time - startTime < 0.2f)
             {
                 answer+=".";
                 answerText.text+=". ";
                 //Debug.Log((Time.time - startTime).ToString("00:00.00"));
             }
 
-            if (Input.GetKeyUp("space") && Time.time - startTime >= 0.5f)
+            if (Input.GetKeyUp("space") && Time.time - startTime >= 0.2f)
             {
                 answer+="-";
                 answerText.text+="- ";
                 //Debug.Log((Time.time - startTime).ToString("00:00.00"));
             }
+            if (audioSource.isPlaying == false && clipQueue.Count > 0) {
+                audioSource.clip = clipQueue.Dequeue();
+                audioSource.Play();
+                //need a phatom sound to break the repeat 2 options or put a clip with no sound or some math trick using %
+                clipQueue.Enqueue(dotSound);
+            }
         }else{
+            if (clipQueue.Count > 0) {
+                clipQueue.Clear();
+            }
+            if (audioSource.isPlaying == true) {
+                audioSource.Stop();
+            }
             //if time runs out compare the answer with the result
             if (string.CompareOrdinal(answer, code[random]) == 0){
                 //got it rigth
