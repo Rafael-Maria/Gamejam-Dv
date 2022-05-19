@@ -65,24 +65,28 @@ public class ChooseLetter : MonoBehaviour
             }
             if (Input.GetKeyUp("space") && Time.time - startTime < 0.2f)
             {
+                position++;
                 answer+=".";
                 answerText.text+=". ";
                 //Debug.Log((Time.time - startTime).ToString("00:00.00"));~
-                if(string.CompareOrdinal(System.Convert.ToString(code[random][position]),".") != 0){
-                    //erro
+                if(string.CompareOrdinal(System.Convert.ToString(code[random][position-1]),".") != 0){
+                    position=0;
+                    answer="";
+                    answerText.text="";
                 }
-                position++;
             }
 
             if (Input.GetKeyUp("space") && Time.time - startTime >= 0.2f)
             {
+                position++;
                 answer+="-";
                 answerText.text+="- ";
                 //Debug.Log((Time.time - startTime).ToString("00:00.00"));
-                if(string.CompareOrdinal(System.Convert.ToString(code[random][position]),"-") != 0){
-                    //erro
+                if(string.CompareOrdinal(System.Convert.ToString(code[random][position-1]),"-") != 0){
+                    position=0;
+                    answer="";
+                    answerText.text="";
                 }
-                position++;
             }
             if (audioSource.isPlaying == false && clipQueue.Count > 0) {
                 audioSource.clip = clipQueue.Dequeue();
