@@ -27,7 +27,7 @@ public class ChooseLetter : MonoBehaviour
         //get the correspond morse from that letters
     }
 
-    void stopScriptButton(){
+    public void stopScriptButton(){
         checker=false;
     }
 
@@ -42,14 +42,14 @@ public class ChooseLetter : MonoBehaviour
             {
                 startTime = Time.time;
             }
-            if (Input.GetKeyUp("space") && Time.time - startTime < 0.5f)
+            if (Input.GetKeyUp("space") && Time.time - startTime < 0.2f)
             {
                 answer+=".";
                 answerText.text+=". ";
                 //Debug.Log((Time.time - startTime).ToString("00:00.00"));
             }
 
-            if (Input.GetKeyUp("space") && Time.time - startTime >= 0.5f)
+            if (Input.GetKeyUp("space") && Time.time - startTime >= 0.2f)
             {
                 answer+="-";
                 answerText.text+="- ";

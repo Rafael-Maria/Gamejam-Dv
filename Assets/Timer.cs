@@ -24,6 +24,7 @@ public class Timer : MonoBehaviour
         if (currentTime <= 0)
         {
             //block write more
+            GameObject.Find("Letter").GetComponent<ChooseLetter>().stopScriptButton();
             currentTime = 0;
             if (Input.GetKeyDown(KeyCode.Escape))
             {
