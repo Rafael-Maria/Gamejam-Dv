@@ -8,6 +8,7 @@ public class ChooseLetter : MonoBehaviour
     string[] code={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
     char letter; // letter to compare
     int random; //random position in array
+    int position; //position of the morse, of the actual letter
     [SerializeField] Text letterText; // letter that will be visible
     [SerializeField] Text answerText; //anser that will be visible
     string answer; //answer used to compare
@@ -20,6 +21,7 @@ public class ChooseLetter : MonoBehaviour
     bool checker;
     void Start()
     {
+        position = 0;
         audioSource = GetComponent<AudioSource>();
         checker=true;
         answer="";
@@ -65,7 +67,11 @@ public class ChooseLetter : MonoBehaviour
             {
                 answer+=".";
                 answerText.text+=". ";
-                //Debug.Log((Time.time - startTime).ToString("00:00.00"));
+                //Debug.Log((Time.time - startTime).ToString("00:00.00"));~
+                if(string.CompareOrdinal(System.Convert.ToString(code[random][position]),".") != 0){
+                    //erro
+                }
+                position++;
             }
 
             if (Input.GetKeyUp("space") && Time.time - startTime >= 0.2f)
@@ -73,12 +79,21 @@ public class ChooseLetter : MonoBehaviour
                 answer+="-";
                 answerText.text+="- ";
                 //Debug.Log((Time.time - startTime).ToString("00:00.00"));
+                if(string.CompareOrdinal(System.Convert.ToString(code[random][position]),"-") != 0){
+                    //erro
+                }
+                position++;
             }
             if (audioSource.isPlaying == false && clipQueue.Count > 0) {
                 audioSource.clip = clipQueue.Dequeue();
                 audioSource.Play();
                 //need a phatom sound to break the repeat 2 options or put a clip with no sound or some math trick using %
                 clipQueue.Enqueue(dotSound);
+            }
+
+            if (string.CompareOrdinal(answer, code[random]) == 0){
+                //got it rigth
+                stopScriptButton();
             }
         }else{
             if (clipQueue.Count > 0) {
