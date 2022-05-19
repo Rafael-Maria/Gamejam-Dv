@@ -88,16 +88,16 @@ public class ChooseLetter : MonoBehaviour
                     answerText.text="";
                 }
             }
+            if (string.CompareOrdinal(answer, code[random]) == 0){
+                //got it rigth
+                checker=false;
+                Debug.Log("Congrats");
+            }
             if (audioSource.isPlaying == false && clipQueue.Count > 0) {
                 audioSource.clip = clipQueue.Dequeue();
                 audioSource.Play();
                 //need a phatom sound to break the repeat 2 options or put a clip with no sound or some math trick using %
                 clipQueue.Enqueue(dotSound);
-            }
-
-            if (string.CompareOrdinal(answer, code[random]) == 0){
-                //got it rigth
-                stopScriptButton();
             }
         }else{
             if (clipQueue.Count > 0) {
