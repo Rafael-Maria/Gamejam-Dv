@@ -39,7 +39,7 @@ public class ChooseWord : MonoBehaviour
         currentTime = 0f;
         points=0;
         if(pointsText){
-                    pointsText.text="Points: " +points.ToString();
+            pointsText.text="Points: " +points.ToString();
         }
         timer = true;
         position = 0;
@@ -62,10 +62,9 @@ public class ChooseWord : MonoBehaviour
              characters[i] = System.Convert.ToString(code[index][i]);
         }
 
-        //prepare the sonds of that letter
-        for(int i = 0; i < characters.Length; i++)
+        //prepare the sounds of that letter
+        for (int i = 0; i < characters.Length; i++)
         {
-            //Debug.Log(characters[i]);
             if(string.CompareOrdinal(characters[i], "-") == 0){
                 clipQueue.Enqueue(dashSound);
             }
@@ -137,11 +136,12 @@ public class ChooseWord : MonoBehaviour
                 position++;
                 answer+=".";
                 answerText.text+=". ";
-                //Debug.Log((Time.time - startTime).ToString("00:00.00"));~
+                //Debug.Log((Time.time - startTime).ToString("00:00.00"));
                 if(string.CompareOrdinal(System.Convert.ToString(code[index][position-1]),".") != 0){
                     position=0;
                     answer="";
                     answerText.text="";
+                    errorPopup();
                 }
             }
 
@@ -155,6 +155,7 @@ public class ChooseWord : MonoBehaviour
                     position=0;
                     answer="";
                     answerText.text="";
+                    errorPopup();
                 }
             }
             if (string.CompareOrdinal(answer, code[index]) == 0){
@@ -170,7 +171,7 @@ public class ChooseWord : MonoBehaviour
             if (audioSource.isPlaying == false && clipQueue.Count > 0) {
                 audioSource.clip = clipQueue.Dequeue();
                 audioSource.Play();
-                //need a phatom sound to break the repeat 2 options or put a clip with no sound or some math trick using %
+                //need a phantom sound to break the repeat 2 options or put a clip with no sound or some math trick using %
                 clipQueue.Enqueue(audioSource.clip);
             }
         }else{
@@ -236,5 +237,10 @@ public class ChooseWord : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void errorPopup()
+    {
+
     }
 }
