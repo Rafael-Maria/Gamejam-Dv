@@ -46,7 +46,6 @@ public class ChooseWord : MonoBehaviour
         answerText.text="";
         words = dataFile.text.ToUpper().Split('\n');//
         //TXT File import
-
         random =UnityEngine.Random.Range(0,words.Length);
         //words[random]="AMOR";
         letter = words[random][positionWord];
