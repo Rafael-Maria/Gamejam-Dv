@@ -320,6 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   letterText: {fileID: 513304215}
   answerText: {fileID: 1162248609}
+  dataFile: {fileID: 4900000, guid: e97c5c3e716fb63408598521a74c91d3, type: 3}
   dotSound: {fileID: 8300000, guid: 2c578ede76479df429f2484d309b103a, type: 3}
   dashSound: {fileID: 8300000, guid: db02cd4b9b0c99d4185f6c974340fd76, type: 3}
   audioSource: {fileID: 513304218}

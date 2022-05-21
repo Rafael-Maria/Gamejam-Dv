@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ChooseWord : MonoBehaviour
 {
     string st = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    string[] words =  new string [5];
+    string[] words;
     string[] code={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
     char letter; // letter to compare
     int random; //random position in array
@@ -16,6 +16,7 @@ public class ChooseWord : MonoBehaviour
     [SerializeField] Text answerText; //anser that will be visible
     string answer; //answer used to compare
     float startTime; //Time used in keys
+    [SerializeField] TextAsset dataFile;
     [SerializeField] AudioClip dotSound; //sound used in dots of morse
     [SerializeField] AudioClip dashSound; // sound used in dashes of morse code
     [SerializeField] AudioSource audioSource; //Source of the audio
@@ -32,10 +33,10 @@ public class ChooseWord : MonoBehaviour
         checker=true;
         answer="";
         answerText.text="";
+        words = dataFile.text.ToUpper().Split('\n');//
         //Miss import txt File
-        //random =Random.Range(0,words.Length);
-        random=0;
-        words[random]="AMOR";
+        random =UnityEngine.Random.Range(0,words.Length);
+        //words[random]="AMOR";
         letter = words[random][positionWord];//System.Convert.ToString(words[random][positionWord]);
         letterText.text=letter.ToString();
         index = st.IndexOf(letter);
@@ -107,7 +108,7 @@ public class ChooseWord : MonoBehaviour
                 audioSource.clip = clipQueue.Dequeue();
                 audioSource.Play();
                 //need a phatom sound to break the repeat 2 options or put a clip with no sound or some math trick using %
-                clipQueue.Enqueue(audioSource);
+                clipQueue.Enqueue(audioSource.clip);
             }
         }else{
             if (clipQueue.Count > 0) {
@@ -116,7 +117,7 @@ public class ChooseWord : MonoBehaviour
             if (audioSource.isPlaying == true) {
                 audioSource.Stop();
             }
-            if((positionWord + 1) != words[random].Length){
+            if((positionWord + 2) != words[random].Length){
                 positionWord++;
                 position = 0;
                 checker=true;
