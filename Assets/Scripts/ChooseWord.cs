@@ -24,6 +24,7 @@ public class ChooseWord : MonoBehaviour
     [SerializeField] TextAsset dataFile;//File with the optional words
     [SerializeField] AudioClip dotSound; //sound used in dots of morse
     [SerializeField] AudioClip dashSound; // sound used in dashes of morse code
+    [SerializeField] AudioClip silenceSound; //Sound of Silence
     [SerializeField] AudioSource audioSource; //Source of the audio
     Queue<AudioClip> clipQueue = new Queue<AudioClip>(); //A queue with the clips to play
     // Start is called before the first frame update
@@ -70,6 +71,7 @@ public class ChooseWord : MonoBehaviour
                 clipQueue.Enqueue(dotSound);
             }
         }
+        clipQueue.Enqueue(silenceSound);
         //Choose one letter from the alfabet
         //get the correspond morse from that letters
     }
@@ -77,6 +79,10 @@ public class ChooseWord : MonoBehaviour
     void init(){
         if(GameObject.Find("Timer").GetComponent<TimerIncrease>()){
             GameObject.Find("Timer").GetComponent<TimerIncrease>().reset();
+        }
+        if(pointsText){
+            points +=3;
+            pointsText.text="Points: " + points.ToString();
         }
         checker=true;
         answer="";
@@ -107,6 +113,7 @@ public class ChooseWord : MonoBehaviour
                 clipQueue.Enqueue(dotSound);
             }
         }
+        clipQueue.Enqueue(silenceSound);
     }
     public void stopScriptButton(){
         checker=false;
@@ -134,6 +141,10 @@ public class ChooseWord : MonoBehaviour
                     position=0;
                     answer="";
                     answerText.text="";
+                    if(pointsText){
+                        points--;
+                        pointsText.text="Points: " + points.ToString();
+                    }
                 }
             }
 
@@ -147,6 +158,10 @@ public class ChooseWord : MonoBehaviour
                     position=0;
                     answer="";
                     answerText.text="";
+                    if(pointsText){
+                        points--;
+                        pointsText.text="Points: " + points.ToString();
+                    }
                 }
             }
             if (string.CompareOrdinal(answer, code[index]) == 0){
@@ -196,6 +211,7 @@ public class ChooseWord : MonoBehaviour
                         clipQueue.Enqueue(dotSound);
                     }
                 }
+                clipQueue.Enqueue(silenceSound);
             }else{
                 //if time runs out compare the answer with the result
                 if (string.CompareOrdinal(answer, code[index]) == 0){
