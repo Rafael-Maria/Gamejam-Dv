@@ -9,15 +9,26 @@ public class TimerIncrease : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Text countdownText;
     float currentTime;
+    bool active;
     void Start()
     {
+        active = true;
         currentTime = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTime += 1 * Time.deltaTime;
-        countdownText.text = "Time: " + currentTime.ToString("0");
+        if(active){
+            currentTime += 1 * Time.deltaTime;
+            countdownText.text = "Time: " + currentTime.ToString("0");
+        }
+    }
+    public void getWord(){
+        active=false;
+    }
+    public void reset(){
+        currentTime = 0f;
+        active=true;
     }
 }

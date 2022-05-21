@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     [SerializeField] Text countdownText;
     float currentTime;
     public float startingTime = 10f;
+    public float incrementTime = 5f;
     void Start()
     {
         currentTime = startingTime;
@@ -31,5 +32,9 @@ public class Timer : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
+    }
+
+    public void incrementTimer(){
+           currentTime+=incrementTime;
     }
 }
