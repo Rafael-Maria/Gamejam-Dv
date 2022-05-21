@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-    public GameObject camera;
+    public new GameObject camera;
     public GameObject pauseMenuUI;
     public GameObject InitialCanvas;
     [SerializeField] AudioSource audioSource;
