@@ -25,10 +25,12 @@ public class ChooseWord : MonoBehaviour
     Queue<AudioClip> clipQueue = new Queue<AudioClip>(); //A queue with the clips to play
     // Start is called before the first frame update
     bool checker;
+    bool timer;
     int index ;
     string[] characters = new string[5];
     void Start()
     {
+        timer = true;
         position = 0;
         positionWord=0;
         audioSource = GetComponent<AudioSource>();
@@ -64,6 +66,7 @@ public class ChooseWord : MonoBehaviour
 
     public void stopScriptButton(){
         checker=false;
+        timer = false;
     }
 
     // Update is called once per frame
@@ -121,7 +124,7 @@ public class ChooseWord : MonoBehaviour
             if (audioSource.isPlaying == true) {
                 audioSource.Stop();
             }
-            if((positionWord + 2) != words[random].Length){
+            if(((positionWord + 2) != words[random].Length) && timer){
                 positionWord++;
                 position = 0;
                 checker=true;
@@ -159,6 +162,12 @@ public class ChooseWord : MonoBehaviour
                 }else{
                     //got it wrong
                     Debug.Log("Loser");
+                    answerText.text="Press Esc to retry";
+                    letterText.text="You lose";
+                    if (Input.GetKey(KeyCode.Escape))
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    }
                 }
             }
         }
