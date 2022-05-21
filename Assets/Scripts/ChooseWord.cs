@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 public class ChooseWord : MonoBehaviour
 {
     string st = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    string[] words;
+    string[] words =  new string [5];
     string[] code={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
     char letter; // letter to compare
     int random; //random position in array
@@ -18,9 +19,11 @@ public class ChooseWord : MonoBehaviour
     [SerializeField] AudioClip dotSound; //sound used in dots of morse
     [SerializeField] AudioClip dashSound; // sound used in dashes of morse code
     [SerializeField] AudioSource audioSource; //Source of the audio
-    Queue<AudioClip> clipQueue; //A queue with the clips to play
+    Queue<AudioClip> clipQueue = new Queue<AudioClip>(); //A queue with the clips to play
     // Start is called before the first frame update
     bool checker;
+    int index ;
+    string[] characters = new string[5];
     void Start()
     {
         position = 0;
@@ -30,11 +33,13 @@ public class ChooseWord : MonoBehaviour
         answer="";
         answerText.text="";
         //Miss import txt File
-        random =Random.Range(0,words.Length);
-        letter = System.Convert.ToString(words[random][positionWord]);
+        //random =Random.Range(0,words.Length);
+        random=0;
+        words[random]="AMOR";
+        letter = words[random][positionWord];//System.Convert.ToString(words[random][positionWord]);
         letterText.text=letter.ToString();
-        int index = st.IndexOf(letter);
-        string[] characters = new string[code[index].Length];
+        index = st.IndexOf(letter);
+        Array.Clear(characters,0,characters.Length);
         for (int i = 0; i < code[index].Length; i++)
         {
              characters[i] = System.Convert.ToString(code[index][i]);
@@ -42,10 +47,10 @@ public class ChooseWord : MonoBehaviour
         for(int i = 0; i < characters.Length; i++)
         {
             //Debug.Log(characters[i]);
-            if(characters[i].Equals("-")){
+            if(string.CompareOrdinal(characters[i], "-") == 0){
                 clipQueue.Enqueue(dashSound);
             }
-            if(characters[i].Equals(".")){
+            if(string.CompareOrdinal(characters[i], ".") == 0){
                 clipQueue.Enqueue(dotSound);
             }
         }
@@ -74,7 +79,7 @@ public class ChooseWord : MonoBehaviour
                 answer+=".";
                 answerText.text+=". ";
                 //Debug.Log((Time.time - startTime).ToString("00:00.00"));~
-                if(string.CompareOrdinal(System.Convert.ToString(code[random][position-1]),".") != 0){
+                if(string.CompareOrdinal(System.Convert.ToString(code[index][position-1]),".") != 0){
                     position=0;
                     answer="";
                     answerText.text="";
@@ -87,13 +92,13 @@ public class ChooseWord : MonoBehaviour
                 answer+="-";
                 answerText.text+="- ";
                 //Debug.Log((Time.time - startTime).ToString("00:00.00"));
-                if(string.CompareOrdinal(System.Convert.ToString(code[random][position-1]),"-") != 0){
+                if(string.CompareOrdinal(System.Convert.ToString(code[index][position-1]),"-") != 0){
                     position=0;
                     answer="";
                     answerText.text="";
                 }
             }
-            if (string.CompareOrdinal(answer, code[random]) == 0){
+            if (string.CompareOrdinal(answer, code[index]) == 0){
                 //got it rigth
                 checker=false;
                 Debug.Log("Congrats");
@@ -111,16 +116,16 @@ public class ChooseWord : MonoBehaviour
             if (audioSource.isPlaying == true) {
                 audioSource.Stop();
             }
-            if(positionWord != words[random].Length){
+            if((positionWord + 1) != words[random].Length){
                 positionWord++;
                 position = 0;
                 checker=true;
                 answer="";
                 answerText.text="";
-                letter = System.Convert.ToString(words[random][positionWord]);
+                letter = words[random][positionWord];//System.Convert.ToString(words[random][positionWord]);
                 letterText.text=letter.ToString();
-                int index = st.IndexOf(letter);
-                string[] characters = new string[code[index].Length];
+                index = st.IndexOf(letter);
+                Array.Clear(characters,0,characters.Length);
                 for (int i = 0; i < code[index].Length; i++)
                 {
                     characters[i] = System.Convert.ToString(code[index][i]);
@@ -128,16 +133,16 @@ public class ChooseWord : MonoBehaviour
                 for(int i = 0; i < characters.Length; i++)
                 {
                     //Debug.Log(characters[i]);
-                    if(characters[i].Equals("-")){
+                    if(string.CompareOrdinal(characters[i], "-") == 0){
                         clipQueue.Enqueue(dashSound);
                     }
-                    if(characters[i].Equals(".")){
+                    if(string.CompareOrdinal(characters[i], ".") == 0){
                         clipQueue.Enqueue(dotSound);
                     }
                 }
             }else{
                 //if time runs out compare the answer with the result
-                if (string.CompareOrdinal(answer, code[random]) == 0){
+                if (string.CompareOrdinal(answer, code[index]) == 0){
                     //got it rigth
                     Debug.Log("Congrats");
                 }else{
