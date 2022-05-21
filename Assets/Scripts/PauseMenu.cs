@@ -24,6 +24,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void BackToMainMenu(){
+        Time.timeScale = 1f;
         Debug.Log("Quitting game...");
         SceneManager.LoadScene(0);
     }
