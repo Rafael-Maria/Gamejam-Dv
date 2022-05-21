@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class ChooseWord : MonoBehaviour
 {
     string st = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -12,6 +13,7 @@ public class ChooseWord : MonoBehaviour
     int random; //random position in array
     int position; //position of the morse, of the actual letter
     int positionWord;
+     [SerializeField] Text wordText;
     [SerializeField] Text letterText; // letter that will be visible
     [SerializeField] Text answerText; //anser that will be visible
     string answer; //answer used to compare
@@ -39,6 +41,7 @@ public class ChooseWord : MonoBehaviour
         //words[random]="AMOR";
         letter = words[random][positionWord];//System.Convert.ToString(words[random][positionWord]);
         letterText.text=letter.ToString();
+        wordText.text="";
         index = st.IndexOf(letter);
         Array.Clear(characters,0,characters.Length);
         for (int i = 0; i < code[index].Length; i++)
@@ -102,6 +105,7 @@ public class ChooseWord : MonoBehaviour
             if (string.CompareOrdinal(answer, code[index]) == 0){
                 //got it rigth
                 checker=false;
+                wordText.text+=letter;
                 Debug.Log("Congrats");
             }
             if (audioSource.isPlaying == false && clipQueue.Count > 0) {
@@ -145,7 +149,13 @@ public class ChooseWord : MonoBehaviour
                 //if time runs out compare the answer with the result
                 if (string.CompareOrdinal(answer, code[index]) == 0){
                     //got it rigth
+                    answerText.text="Press Esc to retry";
                     Debug.Log("Congrats");
+                    letterText.text="Congrats";
+                    if (Input.GetKey(KeyCode.Escape))
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    }
                 }else{
                     //got it wrong
                     Debug.Log("Loser");
