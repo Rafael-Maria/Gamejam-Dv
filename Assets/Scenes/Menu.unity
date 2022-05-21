@@ -2528,7 +2528,7 @@ GameObject:
   - component: {fileID: 1765663299}
   - component: {fileID: 1765663298}
   m_Layer: 5
-  m_Name: Rank Button
+  m_Name: Challenge Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2551,8 +2551,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.64484, y: -51}
-  m_SizeDelta: {x: 463.4174, y: 123.9953}
+  m_AnchoredPosition: {x: 60.026, y: -61.998}
+  m_SizeDelta: {x: 654.3463, y: 123.9953}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1765663298
 MonoBehaviour:
@@ -3283,8 +3283,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 85, y: 72}
-  m_SizeDelta: {x: -68, y: -76}
+  m_AnchoredPosition: {x: 0.00015258789, y: 0}
+  m_SizeDelta: {x: -0.00030518, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2138940863
 MonoBehaviour:
@@ -3306,7 +3306,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ranked
+  m_text: Challenge
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89d5caf84ce14844f9c791ac6ed84c00, type: 2}
   m_sharedMaterial: {fileID: 8604379136250743304, guid: 89d5caf84ce14844f9c791ac6ed84c00, type: 2}
@@ -3369,7 +3369,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -117.23859, y: 31.473951, z: 52.66024, w: -109.91275}
+  m_margin: {x: -0.9587098, y: -0.1082477, z: -0.4552994, w: 0.6249275}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
