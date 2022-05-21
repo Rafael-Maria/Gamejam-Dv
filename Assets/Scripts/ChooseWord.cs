@@ -18,6 +18,7 @@ public class ChooseWord : MonoBehaviour
     [SerializeField] Text wordText; //Text to try discover the word
     [SerializeField] Text letterText; // letter that will be visible
     [SerializeField] Text answerText; //answer that will be visible
+    [SerializeField] Text wordTextGot;
     string answer; //answer used to compare
     float startTime; //Time used in keys
     [SerializeField] TextAsset dataFile;//File with the optional words
@@ -86,6 +87,9 @@ public class ChooseWord : MonoBehaviour
         letter = words[random][positionWord];//System.Convert.ToString(words[random][positionWord]);
         letterText.text=letter.ToString();
         wordList.Add(wordText.text);
+        if(wordTextGot){
+            wordTextGot.text +=wordText.text + "\n";
+        }
         wordText.text="";
         index = st.IndexOf(letter);
         Array.Clear(characters,0,characters.Length);
