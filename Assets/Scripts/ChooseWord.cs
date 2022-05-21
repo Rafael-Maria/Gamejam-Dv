@@ -216,30 +216,30 @@ public class ChooseWord : MonoBehaviour
                         if(GameObject.Find("Timer").GetComponent<TimerIncrease>()){
                             GameObject.Find("Timer").GetComponent<TimerIncrease>().getWord();
                         }
-                        answerText.text="Press Esc to retry\nPress Enter to go to main menu";
+                        answerText.text="Press Enter to retry\nPress Esq to go to main menu";
                         letterText.text="Congrats";
                         if (Input.GetKey(KeyCode.Escape))
                         {
-                            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                            SceneManager.LoadScene(0);
                         }
                         if (Input.GetKey(KeyCode.Return))
                         {
-                            SceneManager.LoadScene(0);
+                            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                         }
                     }
                     init();
                 }else{
                     //got it wrong
                     Debug.Log("Loser");
-                    answerText.text="Press Esc to retry\nPress Enter to go to main menu";
+                    answerText.text="Press Enter to retry\nPress Esq to go to main menu";
                     letterText.text="You lose";
                     if (Input.GetKey(KeyCode.Escape))
                     {
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        SceneManager.LoadScene(0);
                     }
                     if (Input.GetKey(KeyCode.Return))
                     {
-                        SceneManager.LoadScene(0);
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     }
                 }
             }

@@ -726,8 +726,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 140
-  m_fontSizeBase: 140
+  m_fontSize: 130
+  m_fontSizeBase: 130
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -998,7 +998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -132, y: -223}
+  m_AnchoredPosition: {x: -105.64, y: -220}
   m_SizeDelta: {x: 232.8436, y: 127.1246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &735920486
@@ -1426,8 +1426,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -105, y: 226}
-  m_SizeDelta: {x: 558.8993, y: 168.0251}
+  m_AnchoredPosition: {x: -116.64001, y: 211.61}
+  m_SizeDelta: {x: 635.9434, y: 204.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &923222017
 MonoBehaviour:
@@ -2000,7 +2000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -111, y: 55.999985}
+  m_AnchoredPosition: {x: -82, y: 52}
   m_SizeDelta: {x: 280.1278, y: 125.8466}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1536739763
@@ -2465,8 +2465,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 140
-  m_fontSizeBase: 140
+  m_fontSize: 130
+  m_fontSizeBase: 130
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2759,7 +2759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.207642, y: -83.63896}
+  m_AnchoredPosition: {x: -0.84975, y: -83.63896}
   m_SizeDelta: {x: 442.4283, y: 127.1246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1812293658
@@ -3133,8 +3133,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 140
-  m_fontSizeBase: 140
+  m_fontSize: 130
+  m_fontSizeBase: 130
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
