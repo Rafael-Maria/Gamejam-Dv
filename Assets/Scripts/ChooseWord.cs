@@ -101,7 +101,7 @@ public class ChooseWord : MonoBehaviour
         if(wordTextGot){
             wordTextGot.text +=wordText.text;
             if(GameObject.Find("Timer").GetComponent<Timer>()){
-                wordTextGot.text += " - " + currentTime.ToString("0.00");
+                wordTextGot.text += " - " + currentTime.ToString("0.00") +"s";
             }
             wordTextGot.text += "\n";
         }
