@@ -14,6 +14,7 @@ public class ChooseWord : MonoBehaviour
     int position; //position of the morse, of the actual letter
     int positionWord; //character of the word we are working
     int points; //points that we get
+    [SerializeField] GameObject errorMenu;
     [SerializeField] Text pointsText; //Text to show the points
     [SerializeField] Text wordText; //Text to try discover the word
     [SerializeField] Text letterText; // letter that will be visible
@@ -39,7 +40,7 @@ public class ChooseWord : MonoBehaviour
         currentTime = 0f;
         points=0;
         if(pointsText){
-                    pointsText.text="Points: " +points.ToString();
+            pointsText.text="Points: " +points.ToString();
         }
         timer = true;
         position = 0;
@@ -62,10 +63,9 @@ public class ChooseWord : MonoBehaviour
              characters[i] = System.Convert.ToString(code[index][i]);
         }
 
-        //prepare the sonds of that letter
-        for(int i = 0; i < characters.Length; i++)
+        //prepare the sounds of that letter
+        for (int i = 0; i < characters.Length; i++)
         {
-            //Debug.Log(characters[i]);
             if(string.CompareOrdinal(characters[i], "-") == 0){
                 clipQueue.Enqueue(dashSound);
             }
@@ -137,11 +137,12 @@ public class ChooseWord : MonoBehaviour
                 position++;
                 answer+=".";
                 answerText.text+=". ";
-                //Debug.Log((Time.time - startTime).ToString("00:00.00"));~
+                //Debug.Log((Time.time - startTime).ToString("00:00.00"));
                 if(string.CompareOrdinal(System.Convert.ToString(code[index][position-1]),".") != 0){
                     position=0;
                     answer="";
                     answerText.text="";
+                    StartCoroutine(errorMenuPopUp((float)0.75));
                 }
             }
 
@@ -155,6 +156,7 @@ public class ChooseWord : MonoBehaviour
                     position=0;
                     answer="";
                     answerText.text="";
+                    StartCoroutine(errorMenuPopUp((float)0.75));
                 }
             }
             if (string.CompareOrdinal(answer, code[index]) == 0){
@@ -170,7 +172,7 @@ public class ChooseWord : MonoBehaviour
             if (audioSource.isPlaying == false && clipQueue.Count > 0) {
                 audioSource.clip = clipQueue.Dequeue();
                 audioSource.Play();
-                //need a phatom sound to break the repeat 2 options or put a clip with no sound or some math trick using %
+                //need a phantom sound to break the repeat 2 options or put a clip with no sound or some math trick using %
                 clipQueue.Enqueue(audioSource.clip);
             }
         }else{
@@ -244,5 +246,12 @@ public class ChooseWord : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator errorMenuPopUp(float delay)
+    {
+        errorMenu.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        errorMenu.SetActive(false);
     }
 }
