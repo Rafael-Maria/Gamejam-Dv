@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class ChooseWord : MonoBehaviour
 {
     string st = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -15,6 +16,7 @@ public class ChooseWord : MonoBehaviour
     int positionWord; //character of the word we are working
     int points; //points that we get
     [SerializeField] GameObject errorMenu;
+    [SerializeField] TextMeshPro errorMessage;
     [SerializeField] Text pointsText; //Text to show the points
     [SerializeField] Text wordText; //Text to try discover the word
     [SerializeField] Text letterText; // letter that will be visible
@@ -153,7 +155,7 @@ public class ChooseWord : MonoBehaviour
                     position=0;
                     answer="";
                     answerText.text="";
-                    StartCoroutine(errorMenuPopUp((float)0.75));
+                    StartCoroutine(errorMenuPopUp((float)0.75, "Try Again!"));
                 }
             }
 
@@ -171,7 +173,7 @@ public class ChooseWord : MonoBehaviour
                     position=0;
                     answer="";
                     answerText.text="";
-                    StartCoroutine(errorMenuPopUp((float)0.75));
+                    StartCoroutine(errorMenuPopUp((float)0.75, "Try Again!"));
                 }
             }
             if (string.CompareOrdinal(answer, code[index]) == 0){
@@ -248,9 +250,10 @@ public class ChooseWord : MonoBehaviour
                     init();
                 }else{
                     //got it wrong
-                    Debug.Log("Loser");
+                    //Debug.Log("Loser");
                     answerText.text="Press Enter to retry\nPress Esc to go to main menu";
-                    letterText.text="You lose";
+                    letterText.text = "";
+                    StartCoroutine(errorMenuPopUp((float)10, "You lost!"));
                     if (Input.GetKey(KeyCode.Escape))
                     {
                         SceneManager.LoadScene(0);
@@ -264,8 +267,9 @@ public class ChooseWord : MonoBehaviour
         }
     }
 
-    private IEnumerator errorMenuPopUp(float delay)
+    private IEnumerator errorMenuPopUp(float delay, String message)
     {
+        errorMenu.GetComponentInChildren<TextMeshProUGUI>().text = message;
         errorMenu.SetActive(true);
         yield return new WaitForSeconds(delay);
         errorMenu.SetActive(false);

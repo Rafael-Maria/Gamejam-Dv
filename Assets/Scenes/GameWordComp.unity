@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 304950656}
   - component: {fileID: 304950655}
   m_Layer: 6
-  m_Name: Text (TMP)
+  m_Name: ErrorMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,6 +691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorMenu: {fileID: 54908887}
+  errorMessage: {fileID: 0}
   pointsText: {fileID: 490669251}
   wordText: {fileID: 1576003046}
   letterText: {fileID: 513304215}
@@ -699,6 +700,7 @@ MonoBehaviour:
   dataFile: {fileID: 4900000, guid: e97c5c3e716fb63408598521a74c91d3, type: 3}
   dotSound: {fileID: 8300000, guid: 2c578ede76479df429f2484d309b103a, type: 3}
   dashSound: {fileID: 8300000, guid: db02cd4b9b0c99d4185f6c974340fd76, type: 3}
+  silenceSound: {fileID: 0}
   audioSource: {fileID: 513304218}
 --- !u!82 &513304218
 AudioSource:

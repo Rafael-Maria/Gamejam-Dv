@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Try again!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89d5caf84ce14844f9c791ac6ed84c00, type: 2}
   m_sharedMaterial: {fileID: 8604379136250743304, guid: 89d5caf84ce14844f9c791ac6ed84c00, type: 2}
@@ -1111,6 +1111,7 @@ MonoBehaviour:
   dataFile: {fileID: 4900000, guid: e97c5c3e716fb63408598521a74c91d3, type: 3}
   dotSound: {fileID: 8300000, guid: 2c578ede76479df429f2484d309b103a, type: 3}
   dashSound: {fileID: 8300000, guid: db02cd4b9b0c99d4185f6c974340fd76, type: 3}
+  silenceSound: {fileID: 0}
   audioSource: {fileID: 513304218}
 --- !u!82 &513304218
 AudioSource:
