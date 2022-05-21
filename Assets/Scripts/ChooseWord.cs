@@ -13,7 +13,9 @@ public class ChooseWord : MonoBehaviour
     int random; //random position in array
     int position; //position of the morse, of the actual letter
     int positionWord;
-     [SerializeField] Text wordText;
+    int points;
+    [SerializeField] Text pointsText;
+    [SerializeField] Text wordText;
     [SerializeField] Text letterText; // letter that will be visible
     [SerializeField] Text answerText; //anser that will be visible
     string answer; //answer used to compare
@@ -30,6 +32,10 @@ public class ChooseWord : MonoBehaviour
     string[] characters = new string[5];
     void Start()
     {
+        points=0;
+        if(pointsText){
+                    pointsText.text="Points: " +points.ToString();
+        }
         timer = true;
         position = 0;
         positionWord=0;
@@ -64,6 +70,32 @@ public class ChooseWord : MonoBehaviour
         //get the correspond morse from that letters
     }
 
+    void init(){
+        answer="";
+        answerText.text="";
+        random =UnityEngine.Random.Range(0,words.Length);
+        position = 0;
+        positionWord=0;
+        letter = words[random][positionWord];//System.Convert.ToString(words[random][positionWord]);
+        letterText.text=letter.ToString();
+        wordText.text="";
+        index = st.IndexOf(letter);
+        Array.Clear(characters,0,characters.Length);
+        for (int i = 0; i < code[index].Length; i++)
+        {
+             characters[i] = System.Convert.ToString(code[index][i]);
+        }
+        for(int i = 0; i < characters.Length; i++)
+        {
+            //Debug.Log(characters[i]);
+            if(string.CompareOrdinal(characters[i], "-") == 0){
+                clipQueue.Enqueue(dashSound);
+            }
+            if(string.CompareOrdinal(characters[i], ".") == 0){
+                clipQueue.Enqueue(dotSound);
+            }
+        }
+    }
     public void stopScriptButton(){
         checker=false;
         timer = false;
@@ -107,6 +139,10 @@ public class ChooseWord : MonoBehaviour
             }
             if (string.CompareOrdinal(answer, code[index]) == 0){
                 //got it rigth
+                if(pointsText){
+                    points++;
+                    pointsText.text="Points: " + points.ToString();
+                }
                 checker=false;
                 wordText.text+=letter;
                 Debug.Log("Congrats");
@@ -152,12 +188,22 @@ public class ChooseWord : MonoBehaviour
                 //if time runs out compare the answer with the result
                 if (string.CompareOrdinal(answer, code[index]) == 0){
                     //got it rigth
-                    answerText.text="Press Esc to retry";
-                    Debug.Log("Congrats");
-                    letterText.text="Congrats";
-                    if (Input.GetKey(KeyCode.Escape))
-                    {
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    if(GameObject.Find("Timer").GetComponent<Timer>() != null){
+                        if(GameObject.Find("Timer").GetComponent<Timer>()){
+                            GameObject.Find("Timer").GetComponent<Timer>().incrementTimer();
+                        }
+                        init();
+                    }else{
+                        if(GameObject.Find("Timer").GetComponent<TimerIncrease>()){
+                            GameObject.Find("Timer").GetComponent<TimerIncrease>().getWord();
+                        }
+                        answerText.text="Press Esc to retry";
+                        Debug.Log("Congrats");
+                        letterText.text="Congrats";
+                        if (Input.GetKey(KeyCode.Escape))
+                        {
+                            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        }
                     }
                 }else{
                     //got it wrong
