@@ -12,23 +12,24 @@ public class ChooseWord : MonoBehaviour
     char letter; // letter to compare
     int random; //random position in array
     int position; //position of the morse, of the actual letter
-    int positionWord;
-    int points;
-    [SerializeField] Text pointsText;
-    [SerializeField] Text wordText;
+    int positionWord; //character of the word we are working
+    int points; //points that we get
+    [SerializeField] Text pointsText; //Text to show the points
+    [SerializeField] Text wordText; //Text to try discover the word
     [SerializeField] Text letterText; // letter that will be visible
-    [SerializeField] Text answerText; //anser that will be visible
+    [SerializeField] Text answerText; //answer that will be visible
     string answer; //answer used to compare
     float startTime; //Time used in keys
-    [SerializeField] TextAsset dataFile;
+    [SerializeField] TextAsset dataFile;//File with the optional words
     [SerializeField] AudioClip dotSound; //sound used in dots of morse
     [SerializeField] AudioClip dashSound; // sound used in dashes of morse code
     [SerializeField] AudioSource audioSource; //Source of the audio
     Queue<AudioClip> clipQueue = new Queue<AudioClip>(); //A queue with the clips to play
     // Start is called before the first frame update
-    bool checker;
-    bool timer;
-    int index ;
+    List<String> wordList = new List<String>();//list with every word getted
+    bool checker; // checker if the code is done correctly
+    bool timer; //if we use a decrese timer
+    int index ; //position in the alphabet - used to get the morse from one specific letter
     string[] characters = new string[5];
     void Start()
     {
@@ -47,7 +48,7 @@ public class ChooseWord : MonoBehaviour
         //Miss import txt File
         random =UnityEngine.Random.Range(0,words.Length);
         //words[random]="AMOR";
-        letter = words[random][positionWord];//System.Convert.ToString(words[random][positionWord]);
+        letter = words[random][positionWord];
         letterText.text=letter.ToString();
         wordText.text="";
         index = st.IndexOf(letter);
@@ -56,6 +57,8 @@ public class ChooseWord : MonoBehaviour
         {
              characters[i] = System.Convert.ToString(code[index][i]);
         }
+
+        //prepare the sonds of that letter
         for(int i = 0; i < characters.Length; i++)
         {
             //Debug.Log(characters[i]);
@@ -79,6 +82,7 @@ public class ChooseWord : MonoBehaviour
         positionWord=0;
         letter = words[random][positionWord];//System.Convert.ToString(words[random][positionWord]);
         letterText.text=letter.ToString();
+        wordList.Add(wordText.text);
         wordText.text="";
         index = st.IndexOf(letter);
         Array.Clear(characters,0,characters.Length);
@@ -167,7 +171,7 @@ public class ChooseWord : MonoBehaviour
                 checker=true;
                 answer="";
                 answerText.text="";
-                letter = words[random][positionWord];//System.Convert.ToString(words[random][positionWord]);
+                letter = words[random][positionWord];
                 letterText.text=letter.ToString();
                 index = st.IndexOf(letter);
                 Array.Clear(characters,0,characters.Length);
@@ -199,7 +203,6 @@ public class ChooseWord : MonoBehaviour
                             GameObject.Find("Timer").GetComponent<TimerIncrease>().getWord();
                         }
                         answerText.text="Press Esc to retry";
-                        Debug.Log("Congrats");
                         letterText.text="Congrats";
                         if (Input.GetKey(KeyCode.Escape))
                         {
