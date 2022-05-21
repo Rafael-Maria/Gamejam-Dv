@@ -2594,7 +2594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc32e955fd21d2e47ad2423ab815b276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownText: {fileID: 1483566640}
+  countdownText2: {fileID: 1483566640}
 --- !u!1 &1656236597
 GameObject:
   m_ObjectHideFlags: 0
