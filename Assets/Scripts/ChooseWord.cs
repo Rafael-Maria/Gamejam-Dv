@@ -74,6 +74,9 @@ public class ChooseWord : MonoBehaviour
     }
 
     void init(){
+        if(GameObject.Find("Timer").GetComponent<TimerIncrease>()){
+            GameObject.Find("Timer").GetComponent<TimerIncrease>().reset();
+        }
         checker=true;
         answer="";
         answerText.text="";
@@ -197,7 +200,6 @@ public class ChooseWord : MonoBehaviour
                         if(GameObject.Find("Timer").GetComponent<Timer>()){
                             GameObject.Find("Timer").GetComponent<Timer>().incrementTimer();
                         }
-                        init();
                     }else{
                         if(GameObject.Find("Timer").GetComponent<TimerIncrease>()){
                             GameObject.Find("Timer").GetComponent<TimerIncrease>().getWord();
@@ -209,6 +211,7 @@ public class ChooseWord : MonoBehaviour
                             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                         }
                     }
+                    init();
                 }else{
                     //got it wrong
                     Debug.Log("Loser");

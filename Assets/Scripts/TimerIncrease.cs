@@ -27,4 +27,8 @@ public class TimerIncrease : MonoBehaviour
     public void getWord(){
         active=false;
     }
+    public void reset(){
+        currentTime = 0f;
+        active=true;
+    }
 }
