@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameWord.unity
     guid: 24b3a66861890204f921c1311f77ea68
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/GameWordComp.unity
+    guid: b21ab06f1a71dae4c9e943fcb34db243
   m_configObjects: {}

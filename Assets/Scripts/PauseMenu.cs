@@ -24,6 +24,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void BackToMainMenu(){
+        Debug.Log("Quitting game...");
         SceneManager.LoadScene(0);
     }
 
@@ -46,9 +47,5 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadOptions(){
         Debug.Log("Loading options...");
-    }
-
-    public void ExitGame(){
-        Debug.Log("Quitting game...");
     }
 }
