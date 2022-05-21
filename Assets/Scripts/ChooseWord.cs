@@ -14,6 +14,7 @@ public class ChooseWord : MonoBehaviour
     int position; //position of the morse, of the actual letter
     int positionWord; //character of the word we are working
     int points; //points that we get
+    [SerializeField] GameObject errorMenu;
     [SerializeField] Text pointsText; //Text to show the points
     [SerializeField] Text wordText; //Text to try discover the word
     [SerializeField] Text letterText; // letter that will be visible
@@ -141,7 +142,7 @@ public class ChooseWord : MonoBehaviour
                     position=0;
                     answer="";
                     answerText.text="";
-                    errorPopup();
+                    StartCoroutine(errorMenuPopUp((float)0.75));
                 }
             }
 
@@ -155,7 +156,7 @@ public class ChooseWord : MonoBehaviour
                     position=0;
                     answer="";
                     answerText.text="";
-                    errorPopup();
+                    StartCoroutine(errorMenuPopUp((float)0.75));
                 }
             }
             if (string.CompareOrdinal(answer, code[index]) == 0){
@@ -247,8 +248,10 @@ public class ChooseWord : MonoBehaviour
         }
     }
 
-    public void errorPopup()
+    private IEnumerator errorMenuPopUp(float delay)
     {
-
+        errorMenu.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        errorMenu.SetActive(false);
     }
 }
