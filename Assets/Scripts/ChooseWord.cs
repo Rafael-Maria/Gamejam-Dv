@@ -71,6 +71,7 @@ public class ChooseWord : MonoBehaviour
     }
 
     void init(){
+        checker=true;
         answer="";
         answerText.text="";
         random =UnityEngine.Random.Range(0,words.Length);

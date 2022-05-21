@@ -19,7 +19,7 @@ public class TimerIncrease : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while(active){
+        if(active){
             currentTime += 1 * Time.deltaTime;
             countdownText.text = "Time: " + currentTime.ToString("0");
         }
