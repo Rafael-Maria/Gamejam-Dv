@@ -148,7 +148,7 @@ public class ChooseWord : MonoBehaviour
                 answerText.text+=". ";
                 //Debug.Log((Time.time - startTime).ToString("00:00.00"));
                 if(string.CompareOrdinal(System.Convert.ToString(code[index][position-1]),".") != 0){
-                    if(pointsText){
+                    if(pointsText && points!=0){
                         points--;
                         pointsText.text="Points: " + points.ToString();
                     }
