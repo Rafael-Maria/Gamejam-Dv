@@ -254,6 +254,7 @@ RectTransform:
   - {fileID: 513304214}
   - {fileID: 1162248608}
   - {fileID: 802697104}
+  - {fileID: 926493219}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -819,7 +820,7 @@ MonoBehaviour:
   wordText: {fileID: 802697106}
   letterText: {fileID: 513304215}
   answerText: {fileID: 1162248609}
-  wordTextGot: {fileID: 0}
+  wordTextGot: {fileID: 926493220}
   dataFile: {fileID: 4900000, guid: e97c5c3e716fb63408598521a74c91d3, type: 3}
   dotSound: {fileID: 8300000, guid: 2c578ede76479df429f2484d309b103a, type: 3}
   dashSound: {fileID: 8300000, guid: db02cd4b9b0c99d4185f6c974340fd76, type: 3}
@@ -1040,7 +1041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.3427124, y: 11.9530945}
+  m_AnchoredPosition: {x: 2.3427124, y: 11.953125}
   m_SizeDelta: {x: -1062.9769, y: -293.4119}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681831697
@@ -1321,6 +1322,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &926493218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926493219}
+  - component: {fileID: 926493221}
+  - component: {fileID: 926493220}
+  m_Layer: 5
+  m_Name: WordGot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &926493219
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926493218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 210509408}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -102.75, y: 23.61}
+  m_SizeDelta: {x: 114.5, y: -180.78}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &926493220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926493218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &926493221
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926493218}
+  m_CullTransparentMesh: 1
 --- !u!1 &947505307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,7 +1439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.3426514, y: 11.953041}
+  m_AnchoredPosition: {x: 2.3426514, y: 11.953064}
   m_SizeDelta: {x: -1062.977, y: -293.41193}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947505309
@@ -2186,7 +2266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -118.099976, y: 15.993011}
+  m_AnchoredPosition: {x: -118.099976, y: 15.993042}
   m_SizeDelta: {x: -599.0369, y: -599.8578}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1359549345

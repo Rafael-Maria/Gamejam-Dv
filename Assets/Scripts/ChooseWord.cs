@@ -32,8 +32,11 @@ public class ChooseWord : MonoBehaviour
     bool timer; //if we use a decrese timer
     int index ; //position in the alphabet - used to get the morse from one specific letter
     string[] characters = new string[5];
+    
+    float currentTime;
     void Start()
     {
+        currentTime = 0f;
         points=0;
         if(pointsText){
                     pointsText.text="Points: " +points.ToString();
@@ -88,9 +91,14 @@ public class ChooseWord : MonoBehaviour
         letterText.text=letter.ToString();
         wordList.Add(wordText.text);
         if(wordTextGot){
-            wordTextGot.text +=wordText.text + "\n";
+            wordTextGot.text +=wordText.text;
+            if(GameObject.Find("Timer").GetComponent<Timer>()){
+                wordTextGot.text += " - " + currentTime.ToString("0.00");
+            }
+            wordTextGot.text += "\n";
         }
         wordText.text="";
+        currentTime=0;
         index = st.IndexOf(letter);
         Array.Clear(characters,0,characters.Length);
         for (int i = 0; i < code[index].Length; i++)
@@ -116,7 +124,7 @@ public class ChooseWord : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //
+        currentTime += 1 * Time.deltaTime;
         //Add the space bar time if one click ".", 1 > sec "-"
         //write the answer
         if(checker){

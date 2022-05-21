@@ -27,10 +27,6 @@ public class Timer : MonoBehaviour
             //block write more
             GameObject.Find("Letter").GetComponent<ChooseWord>().stopScriptButton();
             currentTime = 0;
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
         }
     }
 
