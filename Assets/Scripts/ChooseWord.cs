@@ -107,7 +107,7 @@ public class ChooseWord : MonoBehaviour
                 audioSource.clip = clipQueue.Dequeue();
                 audioSource.Play();
                 //need a phatom sound to break the repeat 2 options or put a clip with no sound or some math trick using %
-                clipQueue.Enqueue(dotSound);
+                clipQueue.Enqueue(audioSource);
             }
         }else{
             if (clipQueue.Count > 0) {
